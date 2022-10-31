@@ -1,8 +1,8 @@
-package productrepository
+package ClientRepository
 
 import (
-	"github.com/boooscaaa/clean-go/adapter/postgres"
-	"github.com/boooscaaa/clean-go/core/domain"
+	"github.com/yeganebagheri/Smart-RealEstate/adapter/postgres"
+	"github.com/yeganebagheri/Smart-RealEstate/core/domain"
 )
 
 type repository struct {

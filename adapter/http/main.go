@@ -2,25 +2,27 @@ package main
 
 import (
 	"context"
-	"encoding/json"
+	//"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
 	"os"
 
-	"github.com/boooscaaa/clean-go/adapter/http/graphql/schema"
-	"github.com/boooscaaa/clean-go/adapter/postgres"
-	"github.com/boooscaaa/clean-go/di"
 	"github.com/gorilla/mux"
 	"github.com/spf13/viper"
 	httpSwagger "github.com/swaggo/http-swagger"
+	"github.com/yeganebagheri/Smart-RealEstate/adapter/postgres"
+	"github.com/yeganebagheri/Smart-RealEstate/di"
 
-	_ "github.com/boooscaaa/clean-go/adapter/http/rest/docs"
-	"github.com/boooscaaa/clean-go/adapter/http/rest/middleware"
+	_ "github.com/yeganebagheri/Smart-RealEstate/adapter/http/rest/docs"
+	"github.com/yeganebagheri/Smart-RealEstate/adapter/http/rest/middleware"
 )
 
 func init() {
-	viper.SetConfigFile(`config.json`)
+	viper.AddConfigPath("C:/Uni/Uni Projects/clean-go-1.1.5/Smart-RealEstate/")
+	viper.SetConfigName("config") // Register config file name (no extension)
+	viper.SetConfigType("json")   // Look for specific type
+	//viper.SetConfigFile(`config.json`)
 	err := viper.ReadInConfig()
 	if err != nil {
 		panic(err)
@@ -39,30 +41,32 @@ func main() {
 	conn := postgres.GetConnection(ctx)
 	defer conn.Close()
 
-	postgres.RunMigrations()
-	productService := di.ConfigProductDI(conn)
-	productGraphQLService := di.ConfigProductGraphQLDI(conn)
+	//postgres.RunMigrations()
+	UserService := di.ConfigUserDI(conn)
+	PostService := di.ConfigPostDI(conn)
 
 	router := mux.NewRouter()
-	graphQLRouter := schema.Config(productGraphQLService)
+
 	router.PathPrefix("/swagger/").Handler(httpSwagger.WrapHandler)
 
 	jsonApiRouter := router.PathPrefix("/").Subrouter()
 	jsonApiRouter.Use(middleware.Cors)
 
-	jsonApiRouter.Handle("/product", http.HandlerFunc(productService.Create)).Methods("POST", "OPTIONS")
-	jsonApiRouter.Handle("/product", http.HandlerFunc(productService.Fetch)).Queries(
+	jsonApiRouter.Handle("/registeruser", http.HandlerFunc(UserService.Create)).Methods("POST", "OPTIONS")
+	jsonApiRouter.Handle("/user", http.HandlerFunc(UserService.Fetch)).Queries(
 		"page", "{page}",
 		"itemsPerPage", "{itemsPerPage}",
 		"descending", "{descending}",
 		"sort", "{sort}",
 		"search", "{search}",
 	).Methods("GET", "OPTIONS")
-
-	router.HandleFunc("/graphql", func(w http.ResponseWriter, r *http.Request) {
-		result := schema.ExecuteQuery(r.URL.Query().Get("query"), graphQLRouter)
-		json.NewEncoder(w).Encode(result)
-	})
+	jsonApiRouter.Handle("/loginuser", http.HandlerFunc(UserService.Login)).Methods("POST", "OPTIONS")
+	jsonApiRouter.Handle("/createpost", http.HandlerFunc(PostService.CreatePost)).Methods("POST", "OPTIONS")
+	jsonApiRouter.Handle("/getpost", http.HandlerFunc(PostService.Get)).Methods("GET", "OPTIONS")
+	// router.HandleFunc("/graphql", func(w http.ResponseWriter, r *http.Request) {
+	// 	result := schema.ExecuteQuery(r.URL.Query().Get("query"), graphQLRouter)
+	// 	json.NewEncoder(w).Encode(result)
+	// })
 
 	port := viper.GetString("server.port")
 

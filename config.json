@@ -1,8 +1,8 @@
 {
     "database": {
-      "url": "://postgres:4ba1b3aeb9fccc96e0c9f7e6d229f9a7a26b86578c9e3918@cleango-db.internal:5432?sslmode=disable"
+      "url": "postgres://postgres:a12345@localhost:5432/RealEstate?sslmode=disable"
     },
     "server": {
       "port": "3000"
     }
-  }
+}

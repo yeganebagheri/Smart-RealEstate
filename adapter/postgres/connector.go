@@ -39,7 +39,7 @@ type PoolInterface interface {
 func GetConnection(context context.Context) *pgxpool.Pool {
 	databaseURL := viper.GetString("database.url")
 
-	conn, err := pgxpool.Connect(context, "postgres"+databaseURL)
+	conn, err := pgxpool.Connect(context, databaseURL)
 
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Unable to connect to database: %v\n", err)
@@ -52,7 +52,7 @@ func GetConnection(context context.Context) *pgxpool.Pool {
 // RunMigrations run scripts on path database/migrations
 func RunMigrations() {
 	databaseURL := viper.GetString("database.url")
-	m, err := migrate.New("file://database/migrations", "pgx"+databaseURL)
+	m, err := migrate.New("././database/migrations", "pgx"+databaseURL)
 	if err != nil {
 		log.Println(err)
 	}

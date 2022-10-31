@@ -24,7 +24,7 @@ const docTemplate = `{
     "paths": {
         "/product": {
             "get": {
-                "description": "Fetch products with server pagination",
+                "description": "Fetch user with server pagination",
                 "consumes": [
                     "application/json"
                 ],
@@ -32,9 +32,9 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "product"
+                    "user"
                 ],
-                "summary": "Fetch products with server pagination",
+                "summary": "Fetch user with server pagination",
                 "parameters": [
                     {
                         "type": "string",

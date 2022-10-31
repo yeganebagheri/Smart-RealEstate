@@ -1,10 +1,10 @@
-package productservice
+package ClientService
 
 import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/boooscaaa/clean-go/core/dto"
+	"github.com/yeganebagheri/Smart-RealEstate/core/dto"
 )
 
 // @Summary Create new product
@@ -16,7 +16,7 @@ import (
 // @Success 200 {object} domain.Product
 // @Router /product [post]
 func (service service) Create(response http.ResponseWriter, request *http.Request) {
-	productRequest, err := dto.FromJSONCreateProductRequest(request.Body)
+	productRequest, err := dto.FromJSONCreateUserRequest(request.Body)
 
 	if err != nil {
 		response.WriteHeader(250)

@@ -1,10 +1,10 @@
-package productservice
+package ClientService
 
 import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/boooscaaa/clean-go/core/dto"
+	"github.com/yeganebagheri/Smart-RealEstate/core/dto"
 )
 
 // @Summary Fetch products with server pagination
@@ -21,7 +21,7 @@ import (
 // @Router /product [get]
 func (service service) Fetch(response http.ResponseWriter, request *http.Request) {
 	paginationRequest, _ := dto.FromValuePaginationRequestParams(request)
-
+	
 	products, err := service.usecase.Fetch(paginationRequest)
 
 	if err != nil {

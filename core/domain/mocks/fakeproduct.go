@@ -8,8 +8,8 @@ import (
 	http "net/http"
 	reflect "reflect"
 
-	domain "github.com/boooscaaa/clean-go/core/domain"
-	dto "github.com/boooscaaa/clean-go/core/dto"
+	domain "github.com/yeganebagheri/Smart-RealEstate/core/domain"
+	dto "github.com/yeganebagheri/Smart-RealEstate/core/dto"
 	gomock "github.com/golang/mock/gomock"
 )
 
@@ -84,10 +84,10 @@ func (m *MockProductUseCase) EXPECT() *MockProductUseCaseMockRecorder {
 }
 
 // Create mocks base method.
-func (m *MockProductUseCase) Create(productRequest *dto.CreateProductRequest) (*domain.Product, error) {
+func (m *MockProductUseCase) Create(productRequest *dto.CreateUserRequest) (*domain.User, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Create", productRequest)
-	ret0, _ := ret[0].(*domain.Product)
+	ret0, _ := ret[0].(*domain.User)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
@@ -137,10 +137,10 @@ func (m *MockProductRepository) EXPECT() *MockProductRepositoryMockRecorder {
 }
 
 // Create mocks base method.
-func (m *MockProductRepository) Create(productRequest *dto.CreateProductRequest) (*domain.Product, error) {
+func (m *MockProductRepository) Create(productRequest *dto.CreateUserRequest) (*domain.User, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Create", productRequest)
-	ret0, _ := ret[0].(*domain.Product)
+	ret0, _ := ret[0].(*domain.User)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
