@@ -61,3 +61,7 @@ require (
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 )
+
+replace (
+	github.com/boooscaaa/clean-go v0.1 => github.com/yeganebagheri/Smart-RealEstate.git v0.1
+)
