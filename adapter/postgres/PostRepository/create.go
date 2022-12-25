@@ -25,7 +25,7 @@ func (repository repository) CreatePost(
 		postRequest.Description,
 	).Scan(
 		&post.Id,
-		&post.RegistrationTime,
+		&post.Date,
 		&post.Price,
 		&post.Location,
 		&post.Image,

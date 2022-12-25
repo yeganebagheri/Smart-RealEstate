@@ -10,7 +10,7 @@ import (
 // Product is entity of table product database column
 type Post struct {
 	Id               int    `json:"id"`
-	RegistrationTime pgtype.Date `json:"RegistrationTime"`
+	Date pgtype.Date `json:"date"`
 	Price            string `json:"Price"`
 	Location         string `json:"Location"`
 	Image            string `json:"Image"`

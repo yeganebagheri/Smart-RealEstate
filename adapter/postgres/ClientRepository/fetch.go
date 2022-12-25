@@ -27,7 +27,7 @@ func (repository repository) Fetch(pagination *dto.PaginationRequestParms) (*dom
 	// 	query,
 	// )
 
-	rows, err := repository.db.Query(ctx, "SELECT * FROM user")
+	rows, err := repository.db.Query(ctx, "SELECT * FROM client")
 	if err != nil {
 		return nil, err
 	}
@@ -38,7 +38,7 @@ func (repository repository) Fetch(pagination *dto.PaginationRequestParms) (*dom
 		rows.Scan(
 			&user.Id,
 			&user.Username,
-			&user.PhonNo,
+			&user.Phone,
 			&user.Password,
 		)
 

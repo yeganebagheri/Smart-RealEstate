@@ -17,12 +17,12 @@ func (repository repository) Create(
 		ctx,
 		"INSERT INTO client (username, phone, password) VALUES ($1, $2, $3) returning id,username, phone, password",
 		userRequest.Username,
-		userRequest.PhonNo,
+		userRequest.Phone,
 		userRequest.Password,
 	).Scan(
 		&user.Id,
 		&user.Username,
-		&user.PhonNo,
+		&user.Phone,
 		&user.Password,
 	)
 

@@ -22,7 +22,7 @@ func (repository repository) Get(
 		getPostRequest.Title,
 	).Scan(
 		&post.Id,
-		&post.RegistrationTime,
+		&post.Date,
 		&post.Price,
 		&post.Location,
 		&post.Image,

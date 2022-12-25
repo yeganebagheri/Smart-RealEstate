@@ -15,11 +15,11 @@ func (repository repository) Login(
 	err := repository.db.QueryRow(
 		ctx,
 		"SELECT * FROM public.client where phone = $1 and password = $2",
-		userRequest.PhonNo,
+		userRequest.Phone,
 		userRequest.Password,
 	).Scan(
 		&user.Username,
-		&user.PhonNo,
+		&user.Phone,
 		&user.Password,
 		&user.Id,
 	)

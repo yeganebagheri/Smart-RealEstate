@@ -8,12 +8,12 @@ import (
 // CreateProductRequest is an representation request body to create a new Product
 type CreateUserRequest struct {
 	Username string `json:"username"`
-	PhonNo   string `json:"PhonNo"`
+	Phone    string `json:"Phone"`
 	Password string `json:"Password"`
 }
 
 type LoginUserRequest struct {
-	PhonNo   string `json:"PhonNo"`
+	Phone    string `json:"Phone"`
 	Password string `json:"Password"`
 }
 
