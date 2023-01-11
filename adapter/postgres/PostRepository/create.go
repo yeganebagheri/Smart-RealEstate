@@ -16,7 +16,7 @@ func (repository repository) CreatePost(
 
 	err := repository.db.QueryRow(
 		ctx,
-		"INSERT INTO post (registrationtime, price, location, image, title, description) VALUES ($1, $2, $3, $4, $5, $6) returning *",
+		"INSERT INTO post (date, price, location, image, title, description) VALUES ($1, $2, $3, $4, $5, $6) returning *",
 		time.Now(),
 		postRequest.Price,
 		postRequest.Location,

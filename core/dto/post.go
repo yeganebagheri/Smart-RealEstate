@@ -5,7 +5,7 @@ import (
 	"io"
 )
 
-// CreateProductRequest is an representation request body to create a new Product
+// CreatePostRequest is an representation request body to create a new Post
 type CreatePostRequest struct {
 	Price       string `json:"Price"`
 	Location    string `json:"Location"`
