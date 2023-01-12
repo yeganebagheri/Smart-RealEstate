@@ -21,9 +21,9 @@ import (
 // @Success 200 {object} domain.Pagination
 // @Router /product [get]
 func (service service) Get(response http.ResponseWriter, request *http.Request) {
-	price := request.URL.Query().Get("Price")
+	//price := request.URL.Query().Get("Price")
 	location := request.URL.Query().Get("Location")
-	title := request.URL.Query().Get("Title")
+	//title := request.URL.Query().Get("Title")
 	//post := domain.Post{}
 	// u := &post{
 	// 	Price:    price,
@@ -31,9 +31,15 @@ func (service service) Get(response http.ResponseWriter, request *http.Request) 
 	// 	Title:    title,
 	// }
 	var getPostRequest = new(dto.GetPostRequest)
-	getPostRequest.Price = price
-	getPostRequest.Location = location
-	getPostRequest.Title = title
+	// if price != "" {
+	// 	getPostRequest.Price = price
+	// }
+	if location != "" {
+		getPostRequest.Location = location
+	
+	// if title != "" {
+	// 	getPostRequest.Title = title
+	// }
 
 	data, err := json.Marshal(getPostRequest)
 	if err != nil {
@@ -60,4 +66,17 @@ func (service service) Get(response http.ResponseWriter, request *http.Request) 
 	}
 
 	json.NewEncoder(response).Encode(user)
+	}
+
+	// //get all
+	// getPostRequest.Location = ""
+	// user, err := service.usecase.Get(getPostRequest)
+
+	// if err != nil {
+	// 	response.WriteHeader(500)
+	// 	response.Write([]byte(err.Error() + "inja"))
+	// 	return
+	// }
+
+	// json.NewEncoder(response).Encode(user)
 }

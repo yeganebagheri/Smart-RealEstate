@@ -39,7 +39,7 @@ func init() {
 func main() {
 	ctx := context.Background()
 	conn := postgres.GetConnection(ctx)
-	defer conn.Close()
+	//defer conn.Close()
 
 	//postgres.RunMigrations()
 	UserService := di.ConfigUserDI(conn)

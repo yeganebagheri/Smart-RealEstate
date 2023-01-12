@@ -15,9 +15,9 @@ type CreatePostRequest struct {
 }
 
 type GetPostRequest struct {
-	Location string `json:"Location"`
-	Price    string `json:"Price"`
-	Title    string `json:"Title"`
+	Location  string `json:"Location"`
+	// Price    string `json:"Price"`
+	// Title    string `json:"Title"`
 }
 
 // FromJSONCreateProductRequest converts json body request to a CreateProductRequest struct

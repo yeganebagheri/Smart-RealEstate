@@ -9,7 +9,7 @@ func (usecase usecase) Get(getPostRequest *dto.GetPostRequest) (*domain.Post, er
 	posts, err := usecase.repository.Get(getPostRequest)
 
 	if err != nil {
-		return nil, err
+		return nil, err 
 	}
 
 	return posts, nil

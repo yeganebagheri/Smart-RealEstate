@@ -14,6 +14,8 @@ import (
 
 	_ "github.com/golang-migrate/migrate/v4/database/pgx" //driver pgx used to run migrations
 	_ "github.com/golang-migrate/migrate/v4/source/file"
+	// "gorm.io/driver/postgres"
+  	// "gorm.io/gorm"
 )
 
 // PoolInterface is an wraping to PgxPool to create test mocks
@@ -37,10 +39,10 @@ type PoolInterface interface {
 
 // GetConnection return connection pool from postgres drive PGX
 func GetConnection(context context.Context) *pgxpool.Pool {
+	//func GetConnection(context context.Context) *gorm.DB {
 	databaseURL := viper.GetString("database.url")
-
+	//conn, err := gorm.Open(postgres.Open(databaseURL), &gorm.Config{})
 	conn, err := pgxpool.Connect(context, databaseURL)
-
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Unable to connect to database: %v\n", err)
 		os.Exit(1)
