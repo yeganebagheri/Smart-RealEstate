@@ -3,6 +3,6 @@
       "url": "postgres://postgres:a12345@localhost:5432/RealEstate?sslmode=disable"
     },
     "server": {
-      "port": "3000"
+      "port": "3001"
     }
 }

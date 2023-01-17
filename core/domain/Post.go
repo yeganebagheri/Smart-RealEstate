@@ -3,19 +3,19 @@ package domain
 import (
 	"net/http"
 
-	"github.com/yeganebagheri/Smart-RealEstate/core/dto"
 	"github.com/jackc/pgtype"
+	"github.com/yeganebagheri/Smart-RealEstate/core/dto"
 )
 
 // Product is entity of table product database column
 type Post struct {
-	Id               int    `json:"id"`
-	Date pgtype.Date `json:"date"`
-	Price            string `json:"Price"`
-	Location         string `json:"Location"`
-	Image            string `json:"Image"`
-	Title            string `json:"Title"`
-	Description      string `json:"Description"`
+	Id          int         `json:"id"`
+	Date        pgtype.Date `json:"date"`
+	Price       int         `json:"Price"`
+	Location    string      `json:"Location"`
+	Image       string      `json:"Image"`
+	Title       string      `json:"Title"`
+	Description string      `json:"Description"`
 }
 
 // ProductService is a contract of http adapter layer

@@ -7,7 +7,7 @@ import (
 
 // CreatePostRequest is an representation request body to create a new Post
 type CreatePostRequest struct {
-	Price       string `json:"Price"`
+	Price       int    `json:"Price"`
 	Location    string `json:"Location"`
 	Image       string `json:"Image"`
 	Title       string `json:"Title"`
@@ -15,7 +15,7 @@ type CreatePostRequest struct {
 }
 
 type GetPostRequest struct {
-	Location  string `json:"Location"`
+	Location string `json:"Location"`
 	// Price    string `json:"Price"`
 	// Title    string `json:"Title"`
 }
