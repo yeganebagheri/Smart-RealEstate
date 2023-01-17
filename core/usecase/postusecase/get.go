@@ -5,7 +5,7 @@ import (
 	"github.com/yeganebagheri/Smart-RealEstate/core/dto"
 )
 
-func (usecase usecase) Get(getPostRequest *dto.GetPostRequest) (*domain.Post, error) {
+func (usecase usecase) Get(getPostRequest *dto.GetPostRequest) ([]*domain.Post, error) {
 	posts, err := usecase.repository.Get(getPostRequest)
 
 	if err != nil {

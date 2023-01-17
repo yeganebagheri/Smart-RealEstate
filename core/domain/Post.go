@@ -29,7 +29,7 @@ type PostService interface {
 // ProductUseCase is a contract of business rule layer
 type PostUseCase interface {
 	CreatePost(postRequest *dto.CreatePostRequest) (*Post, error)
-	Get(postRequest *dto.GetPostRequest) (*Post, error)
+	Get(postRequest *dto.GetPostRequest) ([]*Post, error)
 	//Fetch(paginationRequest *dto.PaginationRequestParms) (*Pagination, error)
 	//GET(userRequest *dto.CreateUserRequest) (*User, error)
 }
@@ -37,7 +37,7 @@ type PostUseCase interface {
 // ProductRepository is a contract of database connection adapter layer
 type PostRepository interface {
 	CreatePost(postRequest *dto.CreatePostRequest) (*Post, error)
-	Get(postRequest *dto.GetPostRequest) (*Post, error)
+	Get(postRequest *dto.GetPostRequest) ([]*Post, error)
 	//Fetch(paginationRequest *dto.PaginationRequestParms) (*Pagination, error)
 	//GET(response http.ResponseWriter, request *http.Request)
 }
