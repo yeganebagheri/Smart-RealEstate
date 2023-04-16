@@ -1,5 +1,7 @@
 # Smart-RealEstate
 
+<!-- Hexagonal architecture -->
+
 Hexagonal architecture (also known as ports and adapters architecture) is a software architecture based on the idea of separating core business from external concerns.
 
 ![image](https://user-images.githubusercontent.com/83599883/232283650-97874249-2ab8-4b0d-b1b5-95ec559f88b4.png)
