@@ -60,3 +60,7 @@ For example, if we want to store data in a postgresql database, we only need to 
 
 ![image](https://user-images.githubusercontent.com/83599883/232286062-eb2ee42d-d529-436e-b005-bbf10dde9db7.png)
 
+From the date of registration of the first ad in a certain neighborhood until the day the user inquires, the prices come from the database and from the Golang part of the program, but the data related to the predicted prices comes from the Python code.
+
+![image](https://user-images.githubusercontent.com/83599883/232288856-807ab63b-8a8b-483f-bc5a-5ce4e9018f78.png)
+
