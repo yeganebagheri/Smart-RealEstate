@@ -60,4 +60,3 @@ For example, if we want to store data in a postgresql database, we only need to 
 
 ![image](https://user-images.githubusercontent.com/83599883/232286062-eb2ee42d-d529-436e-b005-bbf10dde9db7.png)
 
-
