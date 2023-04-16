@@ -29,3 +29,33 @@ In this case, it is the kernel that needs something that the Driver provides, so
 For example, if the kernel needs to store data in a postgresql database, the kernel initiates a connection to execute an INSERT query on the postgresql client.
 
 ![image](https://user-images.githubusercontent.com/83599883/232284103-5d4c6c87-cff2-4c20-a770-89fa49de1bad.png)
+
+Ports: 
+
+Note that Actors and Core speak different languages. An external application sends a request over http to make a call to the main service (which doesn't understand what http means).
+Another example is when the core (which is technology agnostic) wants to store data in a postgresql database.
+Then, there must be "something" that can help us make such translations. This is where ports and adapters come into play.
+
+Ports for driver actors:
+
+![image](https://user-images.githubusercontent.com/83599883/232285280-cacb64e7-8fbf-449c-86ea-027cc90b9130.png)
+
+Ports for driven actors:
+
+![image](https://user-images.githubusercontent.com/83599883/232285387-084d451b-1255-4eea-95b7-69888adc5538.png)
+
+Adapters
+On the other hand, we have adapters that are responsible for converting a request from actor to core and vice versa. This is necessary, because as we said before, actors and core "speak" different languages.
+An adapter for a port driver converts a specific technology request into a call to a core service.
+
+![image](https://user-images.githubusercontent.com/83599883/232285796-264a5539-d328-44a4-83d5-140273bc8685.png)
+
+
+Dependency Injection
+After completing the implementation, it is necessary to somehow connect the adapters to the corresponding ports.
+This can be done when the application starts and allows us to decide which adapter should be connected on each port, this is what we call "dependency injection".
+For example, if we want to store data in a postgresql database, we only need to connect an adapter for the postgresql database to the corresponding port.
+
+![image](https://user-images.githubusercontent.com/83599883/232286062-eb2ee42d-d529-436e-b005-bbf10dde9db7.png)
+
+
